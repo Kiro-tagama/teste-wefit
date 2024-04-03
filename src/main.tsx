@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { BrowserRouter, createBrowserRouter, Route, Router, RouterProvider, Routes } from 'react-router-dom';
 import { ContextProvider } from './context/context';
 import { Home } from './screens/Home';
 import { Cart } from './screens/Cart';
 import { PurchaseMade } from './screens/PurchaseMade';
-import { Header } from './components/Header';
 import styled from 'styled-components';
+import { Header } from './components/Header';
 
 export const Container = styled.div`
   max-width: 1080px;
@@ -24,10 +24,16 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ContextProvider>
-      <Container>
-        <Header />
-        <RouterProvider router={router} />
-      </Container>
+      <BrowserRouter>
+        <Container>
+          <Header />
+          <Routes>  {/* Use Routes instead of Router */}
+            <Route path="/" element={<Home />} />  {/* Use element prop */}
+            <Route path="/Cart" element={<Cart />} />
+            <Route path="/PurchaseMade" element={<PurchaseMade />} />
+          </Routes>
+        </Container>
+      </BrowserRouter>
     </ContextProvider>
   </React.StrictMode>
 );

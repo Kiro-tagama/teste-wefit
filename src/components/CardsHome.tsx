@@ -1,40 +1,23 @@
-import { styled } from 'styled-components';
-import { PropsProduts } from '../context/context';
+import { CartIcon } from '../assets/cartIcon';
+import { PropsProduts, useMyContext } from '../context/context';
+import { Button, Card } from '../styles/styles';
 
 export function CardsHome(props: { data: PropsProduts }) {
-  const Card = styled.div`
-    background: #FFFFFF;
-    color: #2F2E41;
-    height: 324px;
-    padding: 16px;
-    gap: 8px;
-    border-radius: 4px;
-    opacity: 0px;
-    display:flex;
-    flex-direction:column ;
-    justify-content:center;
-    align-items:center;
-  `;
-
-  const Button = styled.button`
-  width: 100%;
-  height: 40px;
-  padding: 8px ;
-  gap: 12px;
-  border-radius: 4px ;
-  border-width:0px;
-  opacity: 0px;
-  background: #009EDD;
-  color:#fff
-  `;
+  const { addToCart, inCart } = useMyContext()
 
   return (
     <Card>
       <img src={props.data.image} width={147} height={188} />
-      <p>{props.data.title}</p>
-      <p>{props.data.price}</p>
-      <Button>
-        1 <span>ADICIONAR AO CARRINHO</span>
+      <p style={{margin:0,fontSize:12,fontWeight:700}}>{props.data.title}</p>
+      <p style={{margin:0,fontSize:16,fontWeight:700}}>R$ {props.data.price.toFixed(2)}</p>
+
+      <Button 
+        onClick={()=>addToCart(props.data.id)}
+        $inCart={inCart[props.data.id] || 0 ? true : false}
+      >
+        <CartIcon/>
+        <span style={{marginRight:8}}>{inCart[props.data.id] || 0}</span> 
+        <span>ADICIONAR AO CARRINHO</span>
       </Button>
     </Card>
   );
