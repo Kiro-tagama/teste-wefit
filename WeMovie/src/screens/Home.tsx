@@ -15,7 +15,6 @@ export function Home() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const searchQuery = queryParams.get('search-query');
-  //const [query,setQuery] = useState<string>("");
   const [isFocused, setIsFocused] = useState<boolean>(false);
 
   const filteredList = searchQuery != null 

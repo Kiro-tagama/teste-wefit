@@ -45,7 +45,7 @@ export function CardInCart() {
                             </tr>
                         );
                     }
-                    return null; // Ignora os itens com quantidade zero
+                    return null; 
                 })}
             </tbody>
         </table>

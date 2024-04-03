@@ -32,7 +32,7 @@ export function Cart() {
         </Total>
         <Button onClick={()=>{
           if(Object.keys(inCart).length != 0){
-            setInCart({}) // finalização do evento apagando os dados
+            setInCart({})
             nav('/PurchaseMade')
           }
         }}>
