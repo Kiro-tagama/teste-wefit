@@ -21,6 +21,8 @@ const LoaderSpiner = styled.div`
 // Componente que utiliza o loader
 export function Loader () {
   return (
-    <LoaderSpiner />
+    <div style={{display:"flex",justifyContent:"center"}}>
+      <LoaderSpiner />
+    </div>
   );
 };

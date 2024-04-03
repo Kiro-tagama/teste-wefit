@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useMyContext } from "../context/context";
-import { Button, Card } from "../styles/styles";
+import { Button, Card, Divider } from "../styles/styles";
 import { CardInCart } from "../components/CardInCart";
 import { useNavigate } from "react-router-dom";
 
@@ -40,13 +40,6 @@ export function Cart() {
     </Card>
   );
 }
-
-
-const Divider = styled.hr`
-width: 100%;
-height: 1px;
-background: #2F2E41;
-`
 
 const AreaTotal = styled.div`
   width: 100%;

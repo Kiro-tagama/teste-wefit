@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 
 export interface PropsProduts {
-  id: string|number;
+  id: number;
   title: string;
   price: number;
   image: string;
@@ -27,8 +27,8 @@ interface PropsContext{
   setActiveLoader: Dispatch<SetStateAction<boolean>>
   getProducts: () => void; 
   addToCart: (id: number) => void; 
-  removeItem: (id: string) => void;
-  updateQuantity: (id: string, quantity: number) => void
+  removeItem: (id: number) => void;
+  updateQuantity: (id: number, quantity: number) => void
 }
 
 const Context = createContext<PropsContext | undefined>(undefined);
@@ -38,7 +38,7 @@ export const ContextProvider: React.FC<ContextProviderProps> = ({
 }) => {
   const [list, setList] = useState<PropsProduts[]>([]);
   const [inCart, setInCart] = useState<{ [key: string]: number }>({});
-  const [activeLoader, setActiveLoader] = useState<boolean>(false);
+  const [activeLoader, setActiveLoader] = useState<boolean>(true);
 
   function addToCart (id:number){
     setInCart((prevCarrinho) => ({
@@ -47,24 +47,23 @@ export const ContextProvider: React.FC<ContextProviderProps> = ({
     }));
   }
 
-  const removeItem = (id: string) => {
-    setInCart(inCart.filter((item: { id: string; }) => item.id !== id));
+  const removeItem = (id: number) => {
+    const updatedCart = { ...inCart };
+    delete updatedCart[id.toString()];
+    setInCart(updatedCart);
   };
 
-  const updateQuantity = (id: string, quantity: number) => {
-    setInCart(inCart.map((item: { id: string; }) => {
-      if (item.id === id) {
-        return { ...item, quantity }; // Atualiza a quantidade do item
-      }
-      return item; // Retorna o item sem alterações
-    }));
+  const updateQuantity = (id: number, quantity: number) => {
+    setInCart({
+      ...inCart,
+      [id.toString()]:quantity
+    });
   };
 
   function getProducts() {
     axios.get('http://localhost:3000/products')
-    .then(res=>{
-      setList(res.data)
-    })
+    .then(res=>{setList(res.data)})
+    .catch(err=>console.log(err))
   }
 
   return (

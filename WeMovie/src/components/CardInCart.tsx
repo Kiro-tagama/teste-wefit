@@ -11,12 +11,12 @@ export function CardInCart() {
         <table style={{width:"100%"}}>
             <thead>
                 <tr>
-                {['PRODUTO', 'QTD', 'SUBTOTAL', ''].map((txt: string) => <th style={{ margin: 0, flex: txt == '' ? 0 : 1, fontSize: 14, fontWeight: 700, color: "#999" }}>{txt}</th>
+                {['PRODUTO', 'QTD', 'SUBTOTAL', ''].map((txt: string,index:number) => <th key={index} style={{ margin: 0, flex: txt == '' ? 0 : 1, fontSize: 14, fontWeight: 700, color: "#999" }}>{txt}</th>
                 )}
                 </tr>
             </thead>
             <tbody>
-                {list.map((item) => {
+                {list?.map((item) => {
                     if (inCart[item.id] > 0) {
                         return (
                             <tr key={item.id}>
@@ -53,7 +53,7 @@ export function CardInCart() {
 
     const cardInMobile=(
         <div style={{display:"flex",flexDirection:"column",gap:21}}>
-        {list.map((item:PropsProduts) => {
+        {list?.map((item:PropsProduts) => {
             if (inCart[item.id] > 0) {
                 return (
                     <div key={item.id} style={{display:'flex'}}>
