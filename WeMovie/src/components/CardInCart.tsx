@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { PropsProduts, useMyContext } from "../context/context";
-import Trash from "../assets/Trash";
-import IconMinus from "../assets/IconMinus";
-import IconPlus from "../assets/IconPlus";
+import Trash from "../assets/icons/Trash";
+import IconMinus from "../assets/icons/IconMinus";
+import IconPlus from "../assets/icons/IconPlus";
 
 export function CardInCart() {
     const { list, inCart, removeItem, updateQuantity } = useMyContext();
@@ -118,14 +118,12 @@ const MobileContainer= styled.div`
 const BottunUpdate = styled.button`
     height: 18px;
     width: 18px;
+    padding: 0;
     background-color: transparent;
-    border: 2px solid #009EDD;
-    color: #009EDD;
-    border-radius: 20px;
+    border: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: 900;
 `
 const QTDValue= styled.span`
     height: 26px;

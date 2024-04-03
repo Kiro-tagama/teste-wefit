@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { Icon } from '../assets/Icon';
+import { Icon } from '../assets/icons/Icon';
 import { useMyContext } from '../context/context';
 import { useNavigate } from 'react-router-dom';
 

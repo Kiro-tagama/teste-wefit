@@ -31,8 +31,10 @@ export function Cart() {
           <h3 style={{margin:0,fontWeight:700, fontSize:24,color:"#2F2E41"}}>R$ {calculateTotal()}</h3>
         </Total>
         <Button onClick={()=>{
-          setInCart({}) // finalização do evento apagando os dados
-          nav('/PurchaseMade')
+          if(Object.keys(inCart).length != 0){
+            setInCart({}) // finalização do evento apagando os dados
+            nav('/PurchaseMade')
+          }
         }}>
           FINALIZAR PEDIDO
         </Button>

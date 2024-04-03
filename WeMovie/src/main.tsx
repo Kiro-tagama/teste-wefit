@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { BrowserRouter, createBrowserRouter, Route, Router, RouterProvider, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ContextProvider } from './context/context';
 import { Home } from './screens/Home';
 import { Cart } from './screens/Cart';
@@ -15,20 +15,14 @@ export const Container = styled.div`
   padding: 16px;
 `;
 
-const router = createBrowserRouter([
-  { path: '/', element: <Home /> },
-  { path: '/Cart', element: <Cart /> },
-  { path: '/PurchaseMade', element: <PurchaseMade /> },
-]);
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ContextProvider>
       <BrowserRouter>
         <Container>
           <Header />
-          <Routes>  {/* Use Routes instead of Router */}
-            <Route path="/" element={<Home />} />  {/* Use element prop */}
+          <Routes>
+            <Route path="/:search-query?" element={<Home />} /> 
             <Route path="/Cart" element={<Cart />} />
             <Route path="/PurchaseMade" element={<PurchaseMade />} />
           </Routes>

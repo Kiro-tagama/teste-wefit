@@ -1,4 +1,4 @@
-import { CartIcon } from '../assets/cartIcon';
+import { CartIcon } from '../assets/icons/cartIcon';
 import { PropsProduts, useMyContext } from '../context/context';
 import { Button, Card } from '../styles/styles';
 

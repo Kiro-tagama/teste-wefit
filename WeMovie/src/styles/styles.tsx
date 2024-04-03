@@ -16,6 +16,7 @@ export const Button = styled.button<{ $inCart?: boolean; }>`
   align-items: center;
   font-weight: 700;
   cursor: pointer;
+  &:hover{background: ${props => props.$inCart ? "#16c313" : "#19aee9"};}
 `;
 
 export const Card = styled.div`

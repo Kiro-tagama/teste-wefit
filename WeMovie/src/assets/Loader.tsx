@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import loader from "./Loader.png"
 
 const spinAnimation = keyframes`
   from {
@@ -10,19 +11,15 @@ const spinAnimation = keyframes`
 `;
 
 const LoaderSpiner = styled.div`
-  border: 4px solid #fff; 
-  border-radius: 50%;
-  
-  width: 62px; 
-  height: 62px; 
   animation: ${spinAnimation} 1s linear infinite; 
 `;
 
-// Componente que utiliza o loader
 export function Loader () {
   return (
-    <div style={{display:"flex",justifyContent:"center"}}>
-      <LoaderSpiner />
+    <div style={{display:"flex",justifyContent:"center",margin:24,padding:10}}>
+      <LoaderSpiner>
+        <img src={loader} alt="" />
+      </LoaderSpiner>
     </div>
-  );
-};
+  )
+}
