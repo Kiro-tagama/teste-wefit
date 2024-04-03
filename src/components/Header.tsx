@@ -26,6 +26,7 @@ export function Header() {
   `;
 
   const Itens=styled.p`
+    height: min-content;
     margin: 0;
     text-align: end;
     color: #999;
@@ -42,7 +43,7 @@ export function Header() {
         onClick={()=>nav('/')}
       >WeMovies</h1>
       <div style={{display:'flex',gap:8}}>
-        <div>
+        <div style={{display:"flex",flexDirection:"column",justifyContent:"center"}}>
           <H5>Meu Carrinho</H5>
           <Itens>{total} itens</Itens>
         </div>

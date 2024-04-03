@@ -1,4 +1,4 @@
-function Trach() {
+function Trash() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15,4 +15,4 @@ function Trach() {
   );
 }
 
-export default Trach;
+export default Trash;

@@ -3,15 +3,18 @@ import { CardsHome } from '../components/CardsHome';
 import { PropsProduts, useMyContext } from '../context/context';
 import { AreaCards, AreaInput, Input } from '../styles/stylesHome';
 import { SearchIcon } from '../assets/search';
+import { Loader } from '../assets/Loader';
 
 export function Home() {
-  const { list } = useMyContext();
+  const { list, activeLoader, setActiveLoader } = useMyContext();
   const [query,setQuery] = useState<string>("");
   const [isFocused, setIsFocused] = useState(false);
 
   const filteredList = query.length > 0 
     ? list.filter((item: PropsProduts) => item.title.toLowerCase().includes(query.toLowerCase()))
     : list;
+
+  
 
   return (
     <>
@@ -27,9 +30,16 @@ export function Home() {
       </AreaInput>
       <br />
       <AreaCards>
-        {filteredList.map((item: PropsProduts) => (
-          <CardsHome key={item.id} data={item} />
-        ))}
+        {!list ? 
+          <>
+          {filteredList.map((item: PropsProduts) => (
+            <CardsHome key={item.id} data={item} />
+          ))} 
+          </>:
+          <div>
+            <Loader/>
+          </div>
+        }
       </AreaCards>
     </>
   );
